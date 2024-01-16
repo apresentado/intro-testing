@@ -30,7 +30,7 @@ func TestHandler(t *testing.T) {
 		engine.GET("/ping", Handler)
 
 		//act - ejecutar
-		engine.ServeHTTP(response, request)
+		engine.ServeHTTP(response, request) //para ejecutar el handler
 
 		//assert
 		assert.Equal(t, expectedStatusCode, response.Code)
