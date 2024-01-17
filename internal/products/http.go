@@ -10,6 +10,12 @@ import (
 	"github.com/go-delve/delve/service"
 )
 
+type HTTPProductsHandlerGetByID struct {
+	ID int
+	Name string
+}
+
+
 //HTTPProductsHandler is a HTTP handler that exposes the products service
 
 type HTTPProductsHandler struct {
@@ -54,5 +60,8 @@ func (h *HTTPProductsHandler) GetByID(ctx *gin.Context) {
 	return
 	}
 	// return the product as a JSON response
-	ctx.JSON(http.StatusOK, product)
+	ctx.JSON(http.StatusOK, HTTPProductsHandlerGetByID{
+		ID: product.ID,
+		Name: product.Name,
+	})
 }
